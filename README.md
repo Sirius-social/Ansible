@@ -16,5 +16,7 @@ Install Ansible
 
 Add ansible user with sudo and with ssh access
 
+Install sudo ```apt-get install -y sudo```
+
 Edit ```/etc/sudoers``` file: ```echo 'ansible ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers```
 
