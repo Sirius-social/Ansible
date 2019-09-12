@@ -1,8 +1,12 @@
 # Ansible scripts for Sirius
 
 ### Prerequirements:
-1. Debian 9.x or above
+1. Debian 9 stretch
 2. Ansible installed 
+
+### Docker provisioning
+1. Install ansible role: ```ansible-galaxy install nickjj.docker```
+2. Usage: ```ansible-playbook docker-playbook.yml```
 
 
 ### Setup node with minimal configuration
