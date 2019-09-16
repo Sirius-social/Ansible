@@ -19,12 +19,12 @@ patroni_superuser_username: postgres
 patroni_superuser_password: supersecretpostgrespasswd
 
 patroni_logformat: "%(asctime)s %(levelname)s: %(message)s"
-patroni_loglevel: INFO
+patroni_loglevel: DEBUG
 patroni_requests_loglevel: WARNING
 
 # http://patroni.readthedocs.io/en/latest/SETTINGS.html#global-universal
 patroni_scope: sirius
-patroni_namespace: /storage2/
+patroni_namespace: /db-cluster/
 patroni_name: "{{ inventory_hostname }}"
 
 # http://patroni.readthedocs.io/en/latest/SETTINGS.html#rest-api
