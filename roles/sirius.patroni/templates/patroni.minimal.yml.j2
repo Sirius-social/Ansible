@@ -1,0 +1,67 @@
+scope: {{ patroni_scope }}
+namespace: {{ patroni_namespace }}
+name: {{ patroni_name }}
+
+restapi:
+    listen: {{ patroni_restapi_listen |d('0.0.0.0:8008', true) }}
+    connect_address: {{ patroni_restapi_connect_address |d(ansible_host + ':8008', true) }}
+
+{% include 'dcs/' + (patroni_dcs |d('etcd')) + '.yml.j2' %}
+
+bootstrap:
+    dcs:
+        ttl: 30
+        loop_wait: 10
+        retry_timeout: 10
+        maximum_lag_on_failover: {{ patroni_bootstrap_dcs_maximum_lag_on_failover |d(1048576, true) |int }}
+        postgresql:
+            use_pg_rewind: true
+
+    initdb:
+    - encoding: UTF8
+    - data-checksums
+
+    pg_hba:
+    {% for client in patroni_bootstrap_pg_hba %}
+      - {{ client.type }} {{ client.database }} {{ client.user }} {{ client.address |d(None) }} {{ client.method }}
+    {% endfor %}
+
+    users:
+    {% for user in patroni_bootstrap_users %}
+	  {{ user.name }}:
+	    password: {{ user.password }}
+	  {% if user.options |d([], true) |length > 0 %}
+		options:
+		{% for option in user.options %}
+		  - {{ option }}
+		 {% endfor %}
+	  {% endif %}
+	{% endfor %}
+
+postgresql:
+    listen: {{ patroni_postgresql_listen |d('0.0.0.0:5432', true) }}
+    connect_address: {{ patroni_postgresql_connect_address |d(ansible_host + ':5432', true) }}
+    data_dir: {{ patroni_postgresql_data_dir }}
+	bin_dir: {{ patroni_postgresql_bin_dir }}
+    pgpass: {{ patroni_postgresql_pgpass }}
+    authentication:
+    {% for role in patroni_postgresql_authentication %}
+      {{ role.type }}:
+        username: {{ role.username }}
+        password: {{ role.password }}
+    {% endfor %}
+    parameters:
+        unix_socket_directories: '.'
+		
+watchdog:
+  mode: {{ patroni_watchdog_mode |d('automatic', true) |lower }}
+{% if patroni_watchdog_mode |d('automatic', true) |lower in ('automatic', 'required') %}
+  device: {{ patroni_watchdog_device |d('/dev/watchdog', true) }}
+  safety_margin: {{ patroni_watchdog_safety_margin |d(5, true) |int }}
+{% endif %}
+
+tags:
+    nofailover: false
+    noloadbalance: false
+    clonefrom: false
+    nosync: false
