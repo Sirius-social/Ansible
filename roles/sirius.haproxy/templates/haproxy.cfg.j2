@@ -24,5 +24,5 @@ listen postgres
     http-check expect status 200
     default-server inter 3s fall 3 rise 2 on-marked-down shutdown-sessions
 	{% for host in groups['postgres_nodes'] %}
-	server host.0.2.11_5432 host:5432 maxconn 1000 check port 8008
+	server host_{{host}} {{host}}:5432 maxconn 1000 check port 8008
 	{% endfor %}
