@@ -1,5 +1,9 @@
 ---
-
+- name: Ensure Postgresql service is stopped
+  service:
+    name: postgresql
+    state: stopped
+  
 - name: Create patroni config directory
   file:
     path: "{{ patroni_config_dir }}"

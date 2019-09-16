@@ -35,7 +35,7 @@ patroni_restapi_keyfile: ""
 patroni_restapi_username: ""
 patroni_restapi_password: ""
 
-patroni_dcs: etcd
+patroni_dcs: zookeeper
 patroni_dcs_exists: false
 
 # http://patroni.readthedocs.io/en/latest/SETTINGS.html#etcd
@@ -69,7 +69,8 @@ patroni_consul_service_check_interval: 5s
 patroni_consul_consistency: default
 
 # http://patroni.readthedocs.io/en/latest/ENVIRONMENT.html#zookeeper
-patroni_zookeeper_hosts: 127.0.0.1:2181
+patroni_zookeeper_hosts: {% for host in groups['zookeeper'] %}{% if loop.index > 1%},{% endif %}{{host}}:{{zookeeper.properties.clientPort}}{% endfor %}
+
 
 # http://patroni.readthedocs.io/en/latest/ENVIRONMENT.html#exhibitor
 patroni_exhibitor_hosts: "" #TODO
