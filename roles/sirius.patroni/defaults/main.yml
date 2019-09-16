@@ -186,8 +186,8 @@ patroni_postgresql_custom_conf: "" #TODO
 patroni_postgresql_parameters:
   - { option: "unix_socket_directories", value: "/var/run/postgresql" }
 
-patroni_postgresql_pg_hba: []
-#  - { type: "host", database: "all",         user: "all",                                address: "0.0.0.0/0", method: "md5" }
+patroni_postgresql_pg_hba: 
+  - { type: "host", database: "all",         user: "all",                                address: "0.0.0.0/0", method: "md5" }
 #  - { type: "host", database: "replication", user: "{{ patroni_replication_username }}", address: "0.0.0.0/0", method: "md5" }
 
 patroni_postgresql_pg_ctl_timeout: 60
