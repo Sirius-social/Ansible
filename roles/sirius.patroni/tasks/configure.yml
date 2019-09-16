@@ -18,7 +18,7 @@
     state: directory
     owner: "{{ patroni_system_user }}"
     group: "{{ patroni_system_group }}"
-    mode: 0750
+    mode: 0700
 
 - name: Prepare callback scripts
   copy:
