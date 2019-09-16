@@ -1,0 +1,13 @@
+---
+- name: Add "stretch-backports" to sources (required for HAProxy 1.8)
+  apt_repository:
+    repo: deb http://httpredir.debian.org/debian stretch-backports main
+    state: present
+    update_cache: yes
+
+- name: Install HAProxy
+  apt:
+    name: haproxy
+    state: present
+    default_release: stretch-backports
+    cache_valid_time: 3600

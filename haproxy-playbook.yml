@@ -1,0 +1,6 @@
+- name: Install HAProxy as Patrony Proxy
+  hosts: "postgres_nodes"
+  become: yes
+
+  roles:
+    - role: "sirius.haproxy"
