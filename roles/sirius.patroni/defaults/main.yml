@@ -14,9 +14,9 @@ patroni_pip_packages:
   - { name: "patroni[{{ patroni_dcs }}]", state: "present", umask: "0022" }
 
 patroni_replication_username: replicator
-patroni_replication_password: {{ patroni_replication_password }}
+patroni_replication_password: "{{ patroni_replication_password }}"
 patroni_superuser_username: postgres
-patroni_superuser_password: {{ patroni_superuser_password }}
+patroni_superuser_password: "{{ patroni_superuser_password }}"
 
 patroni_logformat: "%(asctime)s %(levelname)s: %(message)s"
 patroni_loglevel: DEBUG
