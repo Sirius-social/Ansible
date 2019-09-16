@@ -69,7 +69,7 @@ patroni_consul_service_check_interval: 5s
 patroni_consul_consistency: default
 
 # http://patroni.readthedocs.io/en/latest/ENVIRONMENT.html#zookeeper
-patroni_zookeeper_hosts: {% for host in groups['zookeeper'] %}{% if loop.index > 1%},{% endif %}{{host}}:{{zookeeper.properties.clientPort}}{% endfor %}
+patroni_zookeeper_hosts: "{% for host in groups['zookeeper'] %}{% if loop.index > 1%},{% endif %}{{host}}:2181{% endfor %}"
 
 
 # http://patroni.readthedocs.io/en/latest/ENVIRONMENT.html#exhibitor
