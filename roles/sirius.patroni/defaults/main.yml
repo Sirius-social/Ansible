@@ -24,7 +24,7 @@ patroni_requests_loglevel: WARNING
 
 # http://patroni.readthedocs.io/en/latest/SETTINGS.html#global-universal
 patroni_scope: sirius
-patroni_namespace: /storage/
+patroni_namespace: /storage1/
 patroni_name: "{{ inventory_hostname }}"
 
 # http://patroni.readthedocs.io/en/latest/SETTINGS.html#rest-api
