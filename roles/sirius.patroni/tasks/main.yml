@@ -15,7 +15,7 @@
 - name: Ensure patroni is running
   systemd:
     name: patroni.service
-    state: stopped
+    state: started
     daemon_reload: yes
     enabled: yes
   tags: [patroni]
