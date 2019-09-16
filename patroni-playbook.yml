@@ -1,0 +1,6 @@
+- name: Install PAtroni
+  hosts: "postgres_nodes"
+  become: yes
+
+  roles:
+    - role: "sirius.patroni"

@@ -1,0 +1,6 @@
+- name: Install Postgres
+  hosts: "postgres_nodes"
+  become: yes
+
+  roles:
+    - role: "sirius.postgres"
