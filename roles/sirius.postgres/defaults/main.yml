@@ -4,7 +4,7 @@ postgresql_enablerepo: ""
 
 # Set postgresql state when configuration changes are made. Recommended values:
 # `restarted` or `reloaded`
-postgresql_restarted_state: "stopped"
+postgresql_restarted_state: "reloaded"
 
 postgresql_python_library: python-psycopg2
 postgresql_user: postgres
@@ -13,7 +13,7 @@ postgresql_group: postgres
 postgresql_unix_socket_directories:
   - /var/run/postgresql
 
-postgresql_service_state: started
+postgresql_service_state: stopped
 postgresql_service_enabled: true
 
 # Global configuration options that will be set in postgresql.conf.
