@@ -12,6 +12,14 @@
     group: "{{ patroni_system_group }}"
     mode: 0750
     
+- name: Ensure Patroni BaseDir exists
+  file:
+    path: "{{ patroni_postgresql_base_dir }}"
+    state: directory
+    owner: "{{ patroni_system_user }}"
+    group: "{{ patroni_system_group }}"
+    mode: 0700
+    
 - name: Ensure Patroni DataDir exists
   file:
     path: "{{ patroni_postgresql_data_dir }}"
