@@ -14,7 +14,7 @@
     
 - name: Ensure Patroni DataDir exists
   file:
-  path: "{{ patroni_postgresql_data_dir }}"
+    path: "{{ patroni_postgresql_data_dir }}"
     state: directory
     owner: "{{ patroni_system_user }}"
     group: "{{ patroni_system_group }}"
