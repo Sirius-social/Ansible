@@ -97,7 +97,7 @@ patroni_bootstrap_dcs_standby_cluster:
 patroni_bootstrap_dcs_postgresql_use_pg_rewind: true
 patroni_bootstrap_dcs_postgresql_use_slots: true
 patroni_bootstrap_dcs_postgresql_parameters:
-  - { option: "max_connections",           value: "100" }
+  - { option: "max_connections",           value: "1000" }
   - { option: "max_locks_per_transaction", value: "64" }
   - { option: "max_worker_processes",      value: "8" }
   - { option: "max_prepared_transactions", value: "0" }
@@ -135,6 +135,7 @@ patroni_bootstrap_initdb:
 patroni_bootstrap_pg_hba: 
   - { type: "host", database: "all",         user: "all",                                address: "127.0.0.1/32", method: "md5" }
   - { type: "host", database: "all",         user: "all",                                address: "0.0.0.0/0", method: "md5" }
+  - { type: "host", database: "replication", user: "{{ patroni_superuser_username }}", address: "0.0.0.0/0", method: "md5" }
   - { type: "host", database: "replication", user: "{{ patroni_replication_username }}", address: "0.0.0.0/0", method: "md5" }
 
 patroni_bootstrap_post_bootstrap: "" #TODO
@@ -151,7 +152,7 @@ patroni_postgresql_connect_address: "{{ ansible_host }}:5432"
 # http://patroni.readthedocs.io/en/latest/SETTINGS.html#postgresql
 patroni_postgresql_authentication:
   - { type: "superuser",   username: "{{ patroni_superuser_username }}",   password: "{{ patroni_superuser_password }}" }
-  - { type: "replication", username: "{{ patroni_replication_username }}", password: "{{ patroni_replication_password }}" }
+  - { type: "replication", username: "{{ patroni_superuser_username }}", password: "{{ patroni_superuser_password }}" }
 
 patroni_postgresql_callbacks:
   - { event: "on_reload",      script: "" }
