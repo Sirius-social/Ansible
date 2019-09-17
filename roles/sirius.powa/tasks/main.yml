@@ -11,6 +11,5 @@
 - name: Extract powa-collector.tar.gz
   unarchive:
     src: https://pypi.io/packages/source/p/powa-collector/powa-collector-0.0.1.tar.gz
-    dest: /tmp
+    dest: /opt
     remote_src: yes
- 
