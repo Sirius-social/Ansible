@@ -17,11 +17,11 @@
 - name: Download the latest release on pypi
   get_url:
     url: https://pypi.io/packages/source/p/powa-collector/powa-collector-0.0.1.tar.gz
-    dest: /tmp/
-    mode: '0440'
+    dest: /tmp/powa-collector.tar.gz
+    mode: '0660'
     
 - name: Extract powa-collector-0.0.1.tar.gz
   unarchive:
-    src: "/tmp/powa-collector-0.0.1.tar.gz"
-    dest: "/tmp/powa-collector"
+    src: /tmp/powa-collector-0.0.1.tar.gz
+    dest: /tmp/powa-collector
  
