@@ -10,15 +10,7 @@
 
 - name: PIP Dependencied
   pip:
-    name: "{{ item }}"
-  with_items:
-    - "powa-collector"
-    
-#- name: Download the latest release on pypi
-#  get_url:
-#    url: https://pypi.io/packages/source/p/powa-collector/powa-collector-0.0.1.tar.gz
-#    dest: /tmp/powa-collector.tar.gz
-#    mode: '0660'
+    name: ['powa-collector']
     
 - name: Extract powa-collector.tar.gz
   unarchive:
