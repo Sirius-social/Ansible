@@ -1,13 +1,9 @@
 ---
 - name: APT Dependencies
   apt:
-    name: "{{ item }}"
+    name: ['python-pip', 'python-psycopg2', 'tar']
     state: present
-  with_items:
-    - "python-pip"
-    - "python-psycopg2"  
-    - "tar"    
-
+  
 - name: PIP Dependencied
   pip:
     name: ['powa-collector']
