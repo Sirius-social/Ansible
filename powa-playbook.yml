@@ -1,0 +1,6 @@
+- name: Install POWA Postgres Monitorinh Tool
+  hosts: "postgres_nodes"
+  become: yes
+
+  roles:
+    - role: "sirius.powa"

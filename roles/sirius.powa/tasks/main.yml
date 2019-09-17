@@ -1,0 +1,29 @@
+---
+- name: APT Dependencies
+  apt:
+    name: {{ item }}
+    state: present
+    become: True
+  with_items:
+    - "python-pip"
+    - "python-psycopg2"  
+    - "gtar"    
+
+- name: PIP Dependencied
+  pip:
+    name: {{ item }}
+    become: True
+   with_items:
+    - "powa-collector"
+    
+- name: Download the latest release on pypi
+  get_url:
+    url: https://pypi.io/packages/source/p/powa-collector/powa-collector-0.0.1.tar.gz
+    dest: /tmp/
+    mode: '0440'
+    
+- name: Extract powa-collector-0.0.1.tar.gz
+  unarchive:
+    src: powa-collector-0.0.1.tar.gz
+    dest: /tmp/powa-collector
+ 

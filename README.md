@@ -41,3 +41,10 @@
 2. Edit ```control-center-production.properties``` file: Set actual value for parameter ```confluent.controlcenter.rest.listeners```
 3. Start Control Center ```/usr/bin/control-center-start /etc/confluent-control-center/control-center-production.properties```
 4. Wait for 30-60 sec
+
+### Setup Postgres Cluster: Patroni + HAProxy
+
+1. Install postgres: ```ansible-playbook postgres-playbook.yml```
+2. Install Patroni (zookeeper must be runned): ```ansible-playbook patroni-playbook.yml```
+3. Install HAProxy: ```ansible-playbook -e "patroni_replication_password=<replicator_pass>" -e "<superuser_pass>" patroni-playbook.yml```
+4. Install POWA Monitorinh tool: 
