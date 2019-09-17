@@ -3,7 +3,6 @@
   apt:
     name: "{{ item }}"
     state: present
-    become: True
   with_items:
     - "python-pip"
     - "python-psycopg2"  
@@ -12,7 +11,6 @@
 - name: PIP Dependencied
   pip:
     name: "{{ item }}"
-    become: True
   with_items:
     - "powa-collector"
     
