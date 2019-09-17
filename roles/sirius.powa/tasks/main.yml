@@ -13,7 +13,7 @@
   pip:
     name: {{ item }}
     become: True
-   with_items:
+  with_items:
     - "powa-collector"
     
 - name: Download the latest release on pypi
