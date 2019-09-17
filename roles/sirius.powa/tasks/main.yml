@@ -22,6 +22,6 @@
     
 - name: Extract powa-collector-0.0.1.tar.gz
   unarchive:
-    src: powa-collector-0.0.1.tar.gz
+    src: /tmp/powa-collector-0.0.1.tar.gz
     dest: /tmp/powa-collector
  
