@@ -1,7 +1,7 @@
 ---
 - name: APT Dependencies
   apt:
-    name: {{ item }}
+    name: "{{ item }}"
     state: present
     become: True
   with_items:
@@ -11,7 +11,7 @@
 
 - name: PIP Dependencied
   pip:
-    name: {{ item }}
+    name: "{{ item }}"
     become: True
   with_items:
     - "powa-collector"
