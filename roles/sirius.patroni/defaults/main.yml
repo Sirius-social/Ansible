@@ -187,7 +187,7 @@ patroni_postgresql_recovery_conf: []
 #  - { option: "standby_mode",    value: "on" }
 #  - { option: "restore_command", value: "cp ../wal_archive/%f %p" }
 
-patroni_postgresql_custom_conf: "" "{{ patroni_postgresql_base_dir }}/postgresql.base.conf"
+patroni_postgresql_custom_conf: "{{ patroni_postgresql_base_dir }}/postgresql.base.conf"
 
 patroni_postgresql_parameters:
   - { option: "unix_socket_directories", value: "/var/run/postgresql" }
