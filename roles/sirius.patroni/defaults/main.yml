@@ -147,7 +147,7 @@ patroni_bootstrap_post_init: "" #TODO
 patroni_bootstrap_users:
   - { name: "{{ patroni_superuser_username }}",   password: "{{ patroni_superuser_password }}",   options: ['createrole', 'createdb'] }
   - { name: "{{ patroni_replication_username }}", password: "{{ patroni_replication_password }}", options: ['replication'] }
-  - { name: "monitoring", password: "monitoring_secret", options: ['no-createdb', 'login', 'no-createrole', 'no-superuser', 'no-replication'] }
+  - { name: "monitoring", password: "monitoring_secret", options: [] }
 
 patroni_postgresql_use_unix_socket: true
 patroni_postgresql_listen: 0.0.0.0:5432
