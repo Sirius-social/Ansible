@@ -20,7 +20,7 @@
         state: present
         name: "{{ gluster_brick_name }}"
         brick: "{{ gluster_brick_dir }}"
-        replicas: {{groups.docker_swarm_nodes|length}}
+        replicas: "{{groups.docker_swarm_nodes|length|int}}"
         cluster: "{{ groups.docker_swarm_nodes | join(',') }}"
         host: "{{ inventory_hostname }}"
         force: yes
