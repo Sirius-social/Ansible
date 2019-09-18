@@ -52,4 +52,4 @@
 ### Setup Gluster support
 
 1. ```ansible-galaxy install "geerlingguy.glusterfs```
-2. ```ansible-play  ansible-playbook gluster_install_playbook.yml```
+2. ```ansible-play  ansible-playbook gluster_playbook.yml```
