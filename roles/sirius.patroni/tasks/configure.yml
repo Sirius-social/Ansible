@@ -24,7 +24,7 @@
   template:
     src: postgresql.base.conf.j2
     dest: "{{ patroni_postgresql_base_dir }}/postgresql.base.conf"
-    owner: {{ patroni_system_user }}
+    owner: "{{ patroni_system_user }}"
     group: "{{ patroni_system_group }}"
     mode: 0750
     
