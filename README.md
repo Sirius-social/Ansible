@@ -3,7 +3,7 @@
 ### Prerequirements:
 1. Debian 9 stretch
 2. Ansible installed 
-3. Setup Valid Hostname ```hostnamectl``` command
+3. Setup Valid Hostname ```hostnamectl``` command and editing ```/etc/hohst``` file
 
 
 ### Setup node with minimal configuration
