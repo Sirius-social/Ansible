@@ -12,10 +12,10 @@
 
 - meta: flush_handlers
 
-#- name: Ensure patroni is running
-#  systemd:
-#    name: patroni.service
-#    state: restarted
-#    daemon_reload: yes
-#    enabled: yes
-#  tags: [patroni]
+- name: Ensure patroni is running
+  systemd:
+    name: patroni.service
+    state: restarted
+    daemon_reload: yes
+    enabled: yes
+  tags: [patroni]
