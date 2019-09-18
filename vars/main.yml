@@ -1,0 +1,34 @@
+gluster_brick_dir: /bricks/brick1/g1
+gluster_mount_dir: /gluster
+gluster_brick_name: sirius
+
+firewall_allowed_tcp_ports:
+  # System
+  - 22
+  # For Gluster.
+  - 111
+  # Kafka
+  - 9092
+  # Zookeeper
+  - 2181
+  # Postgres via Patroni + HAProxy
+  - 7000
+  - 5000
+  - 8008
+  # Web
+  - 80
+  - 443
+  # Port-mapper for Gluster 3.4+.
+  # - 2049
+  # Gluster Daemon.
+  - 24007
+  # 24009+ for Gluster <= 3.3; 49152+ for Gluster 3.4+ (one port per server).
+  - 24009
+  - 24010
+  - 24011
+  # Gluster inline NFS server.
+  - 38465
+  - 38466
+  - 38467
+firewall_allowed_udp_ports:
+  - 111
