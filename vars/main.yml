@@ -1,4 +1,4 @@
-gluster_brick_dir: /bricks/brick1/g1
+gluster_brick_dir: /bricks/brick1/g2
 gluster_mount_dir: /gluster
 gluster_brick_name: sirius
 
