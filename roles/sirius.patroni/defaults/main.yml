@@ -133,6 +133,7 @@ patroni_bootstrap_initdb:
   - { option: "data-checksums" }
 
 patroni_bootstrap_pg_hba: 
+  - { type: "host", database: "all",         user: "monitoring",                         address: "127.0.0.1/32", method: "trust" }
   - { type: "host", database: "all",         user: "all",                                address: "127.0.0.1/32", method: "md5" }
   - { type: "host", database: "all",         user: "all",                                address: "0.0.0.0/0", method: "md5" }
   - { type: "host", database: "replication", user: "{{ patroni_superuser_username }}", address: "0.0.0.0/0", method: "md5" }
@@ -144,6 +145,7 @@ patroni_bootstrap_post_init: "" #TODO
 patroni_bootstrap_users:
   - { name: "{{ patroni_superuser_username }}",   password: "{{ patroni_superuser_password }}",   options: ['createrole', 'createdb'] }
   - { name: "{{ patroni_replication_username }}", password: "{{ patroni_replication_password }}", options: ['replication'] }
+  - { name: "monitoring", password: "monitoring_secret", options: ['no-createdb', 'login', 'no-createrole', 'no-superuser', 'no-replication'] }
 
 patroni_postgresql_use_unix_socket: true
 patroni_postgresql_listen: 0.0.0.0:5432
