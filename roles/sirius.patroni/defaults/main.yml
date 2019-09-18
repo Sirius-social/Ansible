@@ -17,6 +17,8 @@ patroni_replication_username: replicator
 patroni_replication_password: "{{ patroni_replication_password }}"
 patroni_superuser_username: postgres
 patroni_superuser_password: "{{ patroni_superuser_password }}"
+patroni_ssl_cert_file: "/etc/ssl/certs/ssl-cert-snakeoil.pem"
+patroni_ssl_key_file: "/etc/ssl/private/ssl-cert-snakeoil.key"
 
 patroni_logformat: "%(asctime)s %(levelname)s: %(message)s"
 patroni_loglevel: INFO
@@ -185,7 +187,7 @@ patroni_postgresql_recovery_conf: []
 #  - { option: "standby_mode",    value: "on" }
 #  - { option: "restore_command", value: "cp ../wal_archive/%f %p" }
 
-patroni_postgresql_custom_conf: "" #TODO
+patroni_postgresql_custom_conf: "{{ patroni_postgresql_base_dir }}/postgresql.base.conf" #TODO
 
 patroni_postgresql_parameters:
   - { option: "unix_socket_directories", value: "/var/run/postgresql" }
