@@ -20,6 +20,14 @@
     group: "{{ patroni_system_group }}"
     mode: 0700
     
+- name: Create patroni postgres base config file
+  template:
+    src: postgresql.base.conf.j2
+    dest: "{{ patroni_postgresql_base_dir }}/postgresql.base.conf"
+    owner: {{ patroni_system_user }}
+    group: "{{ patroni_system_group }}"
+    mode: 0750
+    
 - name: Ensure Patroni DataDir exists
   file:
     path: "{{ patroni_postgresql_data_dir }}"
@@ -44,14 +52,6 @@
   template:
     src: patroni.service.j2
     dest: /etc/systemd/system/patroni.service
-    owner: root
-    group: root
-    mode: 0644
-    
-- name: Create patroni postgres base config file
-  template:
-    src: postgresql.base.conf.j2
-    dest: "{{ patroni_postgresql_base_dir }}/postgresql.base.conf"
     owner: root
     group: root
     mode: 0644
