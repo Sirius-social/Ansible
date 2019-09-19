@@ -39,7 +39,7 @@
 
 1. On admin machine navigate ```cd /etc/confluent-control-center```
 2. Edit ```control-center-production.properties``` file: Set actual value for parameter ```confluent.controlcenter.rest.listeners```
-3. Start Control Center ```/usr/bin/control-center-start /etc/confluent-control-center/control-center-production.properties```
+3. Restart ControlCenter ```systemctl restart confluent-control-center```
 4. Wait for 30-60 sec
 
 ### Setup Postgres Cluster: Patroni + HAProxy
