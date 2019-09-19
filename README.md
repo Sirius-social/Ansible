@@ -47,7 +47,7 @@
 1. Install postgres: ```ansible-playbook postgres-playbook.yml```
 2. Install Patroni (zookeeper must be runned): ```ansible-playbook patroni-playbook.yml```
 3. Install HAProxy: ```ansible-playbook -e "patroni_replication_password=<replicator_pass>" -e "patroni_superuser_password=<superuser_pass>" patroni-playbook.yml```
-4. Install POWA Monitorinh tool: 
+4. [WatchDog](https://github.com/zalando/patroni/blob/master/docs/watchdog.rst): ```chown postgres /dev/watchdog```
 
 ### Setup Gluster support
 
